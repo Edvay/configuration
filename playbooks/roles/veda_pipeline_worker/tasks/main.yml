@@ -47,6 +47,18 @@
     - install
     - install:base
 
+- name: create symlinks from the venv bin dir
+  file:
+    src: '{{ veda_pipeline_worker_home }}/venvs/{{ veda_pipeline_worker_service_name }}/bin/{{ item }}'
+    dest: '{{ COMMON_BIN_DIR }}/{{ item }}.veda_pipeline_worker'
+    state: link
+  with_items:
+  - python
+  - pip
+  tags:
+    - install
+    - install:configuration
+
 - name: write out the supervisor wrapper
   template:
     src: edx/app/veda_pipeline_worker/veda_pipeline_worker.sh.j2
@@ -100,18 +112,6 @@
   tags:
     - manage
     - manage:start
-
-- name: create symlinks from the venv bin dir
-  file:
-    src: '{{ veda_pipeline_worker_home }}/venvs/{{ veda_pipeline_worker_service_name }}/bin/{{ item }}'
-    dest: '{{ COMMON_BIN_DIR }}/{{ item }}.veda_pipeline_worker'
-    state: link
-  with_items:
-  - python
-  - pip
-  tags:
-    - install
-    - install:configuration
 
 - name: restart the applicaton
   supervisorctl:
