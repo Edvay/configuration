@@ -10,28 +10,27 @@
 # Tasks for veda_ffmpeg role
 #
 
-- block:
-  - name: checkout v_videocompile
-    git:
-      repo: "{{ VEDA_FFMPEG_GIT_URL }}"
-      dest: "{{ veda_ffmpeg_root }}"
-      version: "{{ VEDA_FFMPEG_VERSION }}"
-    tags:
-      - install
-      - install:code
-
-  - name: install v_videocompile
-    command: "python setup.py install"
-    args:
-      chdir: "{{ veda_ffmpeg_root }}"
-    tags:
-      - install
-      - install:code
-
-  - name: compile v_videocompile
-    command: "v_videocompile"
-    tags:
-      - install
-      - install:system-requirements
-
+- name: checkout v_videocompile
+  git:
+    repo: "{{ VEDA_FFMPEG_GIT_URL }}"
+    dest: "{{ veda_ffmpeg_root }}"
+    version: "{{ VEDA_FFMPEG_VERSION }}"
   become: False
+  tags:
+    - install
+    - install:code
+
+- name: install v_videocompile
+  command: "python setup.py install"
+  args:
+    chdir: "{{ veda_ffmpeg_root }}"
+  tags:
+    - install
+    - install:code
+
+- name: compile v_videocompile
+  command: "v_videocompile"
+  become: False
+  tags:
+    - install
+    - install:system-requirements
