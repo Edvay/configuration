@@ -312,6 +312,10 @@ VIDEO_PIPELINE_DOMAIN: "veda-${deploy_host}"
 VIDEO_PIPELINE_BASE_URL_ROOT: "https://{{ VIDEO_PIPELINE_DOMAIN }}"
 VIDEO_PIPELINE_BASE_LMS_BASE_URL: "https://{{ EDXAPP_LMS_BASE }}"
 
+VEDA_WEB_FRONTEND_VERSION: "ammar/sandbox-testing-fixes"
+VEDA_PIPELINE_WORKER_VERSION: "ammar/sandbox-testing-fixes"
+VEDA_ENCODE_WORKER_VERSION: "master"
+
 EOF
 fi
 

@@ -21,6 +21,11 @@ veda_web_frontend_service_home: "{{ COMMON_APP_DIR }}/{{ veda_web_frontend_servi
 veda_web_frontend_code_dir: "{{ veda_web_frontend_service_home }}/{{ veda_web_frontend_service_name }}"
 veda_web_frontend_venv_dir: "{{ veda_web_frontend_service_home }}/venvs/{{ veda_web_frontend_service_name }}"
 
+VEDA_WEB_FRONTEND_LOAD_DATA: false
+veda_web_frontend_post_migrate_commands:
+  - command: 'python manage.py loaddata encodes'
+    when: '{{ VEDA_WEB_FRONTEND_LOAD_DATA }}'
+
 #
 # OS packages
 #
