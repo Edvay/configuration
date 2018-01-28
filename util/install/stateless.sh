@@ -89,4 +89,4 @@ sudo -H pip install -r requirements.txt
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks/small_deployments && sudo -E ansible-playbook -c local ./edx-stateless.yml -i ./stateless.ini $EXTRA_VARS "$@"
+cd /var/tmp/configuration/playbooks/small_deployments && sudo -E ansible-playbook -c local ./edx-stateless.yml $EXTRA_VARS "$@"
