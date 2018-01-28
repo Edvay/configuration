@@ -11,7 +11,7 @@
   vars:
     MYSQL_BIND_ADDRESS: "0.0.0.0"
 #    EDXLOCAL_MYSQL_ALLOWED_HOST: "{{ hostvars['stateless'][0]['ansible_hostname'] }}"
-    EDXLOCAL_MYSQL_ALLOWED_HOST: "ip-192-168-0-160.ec2.internal"
+    EDXLOCAL_MYSQL_ALLOWED_HOST: "35.154.188.13"
 #    rabbitmq_ip: "{{ groups['datastores'][0] }}"
   vars_files:
     - "../roles/edxapp/defaults/main.yml"
