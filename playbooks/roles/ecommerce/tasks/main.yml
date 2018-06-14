@@ -88,8 +88,10 @@
 
 - name: Migrate
   shell: >
-    DB_MIGRATION_USER='{{ COMMON_MYSQL_MIGRATE_USER }}'
-    DB_MIGRATION_PASS='{{ COMMON_MYSQL_MIGRATE_PASS }}'
+    DB_MIGRATION_USER='migrate'
+    DB_MIGRATION_PASS='password'
+    DB_MIGRATION_HOST='13.126.6.71'
+    DB_MIGRATION_PORT='3306'
     {{ ecommerce_venv_dir }}/bin/python ./manage.py migrate --noinput
   args:
     chdir: "{{ ecommerce_code_dir }}"
